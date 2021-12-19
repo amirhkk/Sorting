@@ -16,8 +16,48 @@
 
 package uk.ac.cam.ahk44.sorting;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import static com.google.common.truth.Truth.assertThat;
+
 @RunWith(JUnit4.class)
-public class TestMergeSorter {}
+public class TestMergeSorter {
+
+    @Test
+    public void MergeSorter_sortsEmptyList() {
+        // ARRANGE
+        Integer[] array = new Integer[] {};
+
+        // ACT
+        new MergeSorter<Integer>().sort(array, Integer::compare);
+
+        // ASSERT
+        assertThat(array).asList().isEmpty();
+    }
+
+    @Test
+    public void MergeSorter_sortsAscendingIntegers() {
+        // ARRANGE
+        Integer[] array = new Integer[] {4, 1, 5, 7, 1};
+
+        // ACT
+        new MergeSorter<Integer>().sort(array, Integer::compareTo);
+
+        // ASSERT
+        assertThat(array).asList().containsExactly(1, 1, 4, 5, 7).inOrder();
+    }
+
+    @Test
+    public void MergeSorter_sortsStrings() {
+        // ARRANGE
+        String[] array = new String[] {"one", "two", "three", "four"};
+
+        // ACT
+        new MergeSorter<String>().sort(array, String::compareTo);
+
+        // ASSERT
+        assertThat(array).asList().containsExactly("four", "one", "three", "two").inOrder();
+    }
+}

@@ -25,6 +25,7 @@ public class QuickSorter<T> implements Sorter<T> {
     // TODO: implement in-place quick sort without using temporary array
     go(array, comparator, 0, array.length);
   }
+
   public void go(T[] array, Comparator<T> comparator, int l, int r) {
     //System.out.println(l);
     //System.out.println(r);

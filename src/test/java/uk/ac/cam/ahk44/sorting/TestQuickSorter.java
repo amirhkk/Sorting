@@ -16,8 +16,48 @@
 
 package uk.ac.cam.ahk44.sorting;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import static com.google.common.truth.Truth.assertThat;
+
 @RunWith(JUnit4.class)
-public class TestQuickSorter {}
+public class TestQuickSorter {
+
+    @Test
+    public void QuickSorter_sortsEmptyList() {
+        // ARRANGE
+        Integer[] array = new Integer[] {};
+
+        // ACT
+        new QuickSorter<Integer>().sort(array, Integer::compare);
+
+        // ASSERT
+        assertThat(array).asList().isEmpty();
+    }
+
+    @Test
+    public void QuickSorter_sortsAscendingIntegers() {
+        // ARRANGE
+        Integer[] array = new Integer[] {4, 1, 5, 7, 1};
+
+        // ACT
+        new QuickSorter<Integer>().sort(array, Integer::compareTo);
+
+        // ASSERT
+        assertThat(array).asList().containsExactly(1, 1, 4, 5, 7).inOrder();
+    }
+
+    @Test
+    public void QuickSorter_sortsStrings() {
+        // ARRANGE
+        String[] array = new String[] {"one", "two", "three", "four"};
+
+        // ACT
+        new QuickSorter<String>().sort(array, String::compareTo);
+
+        // ASSERT
+        assertThat(array).asList().containsExactly("four", "one", "three", "two").inOrder();
+    }
+}
