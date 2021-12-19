@@ -22,5 +22,16 @@ public class InsertionSorter<T> implements Sorter<T> {
   @Override
   public void sort(T[] array, Comparator<T> comparator) {
     // TODO: implement in-place insertion sort without using a temporary array
+    for (int i = 0; i < array.length; i++) {
+      for (int j = 0; j < i; j++) {
+        if (comparator.compare(array[i], array[j]) <= 0) {
+          for(int k = j; k < i; k++){
+            T temp = array[i];
+            array[i] = array[k];
+            array[k] = temp;
+          }
+        }
+      }
+    }
   }
 }

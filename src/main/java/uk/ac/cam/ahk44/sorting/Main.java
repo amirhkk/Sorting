@@ -25,8 +25,7 @@ public class Main {
     new MergeSorter<Integer>().sort(ints, Integer::compare);
     System.out.println(Arrays.toString(ints));
 
-    String[] strings =
-        new String[] {"apples", "Pears", "Oranges", "Bananas", "Grapes", "Raspberries"};
+    String[] strings = new String[] {"apples", "Pears", "Oranges", "Bananas", "Grapes", "Raspberries"};
     new InsertionSorter<String>().sort(strings, String::compareTo);
     System.out.println(Arrays.toString(strings));
 
