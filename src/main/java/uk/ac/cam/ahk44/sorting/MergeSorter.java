@@ -30,7 +30,8 @@ public class MergeSorter<T> implements Sorter<T> {
       for(int i = array.length / 2; i < array.length; i++) right[i - array.length / 2] = array[i];
       new MergeSorter<T>().sort((T[]) left, comparator);
       new MergeSorter<T>().sort((T[]) right, comparator);
-      int pos1 = 0; int pos2 = 0;
+      int pos1 = 0;
+      int pos2 = 0;
       for(int i = 0; i < array.length; i++){
         if(pos1 == array.length / 2){
           array[i] = (T) right[pos2++];
@@ -44,6 +45,5 @@ public class MergeSorter<T> implements Sorter<T> {
         else array[i] = (T) right[pos2++];
       }
     }
-
   }
 }
